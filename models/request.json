@@ -1,0 +1,46 @@
+[
+    {
+        "id":"siliconflow" ,
+        "url": "https://api.siliconflow.cn/v1/chat/completions",
+        "payload": {
+            "model": "deepseek-ai/DeepSeek-V3",
+            "messages": [
+                {
+                    "role": "user",
+                    "content": "将以下问题分成三个步骤：中国大模型行业2025年将会迎来哪些机遇和挑战？"
+                }
+            ],
+            "stream": false,
+            "max_tokens": 512,
+            "stop": null,
+            "temperature": 0.7,
+            "top_p": 0.7,
+            "top_k": 50,
+            "frequency_penalty": 0.5,
+            "n": 1,
+            "response_format": {
+                "type": "text"
+            }
+        },
+        "headers": {
+            "Authorization": "Bearer ",
+            "Content-Type": "application/json"
+        }
+    },
+    {
+        "id":"deepseek" ,
+        "url": "https://api.deepseek.com/chat/completions",
+        "payload": {
+            "model": "deepseek-chat",
+            "messages": [
+                {"role": "system", "content": "You are a helpful assistant."},
+                {"role": "user", "content": "Hello!"}
+            ],
+            "stream": false
+        },
+        "headers": {
+            "Authorization": "Bearer ",
+            "Content-Type": "application/json"
+        }
+    }
+]
