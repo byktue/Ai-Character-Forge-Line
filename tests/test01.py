@@ -15,7 +15,7 @@ deepseek_api_handler = APIRequestHandler('models/request.json', 'models/keys.tom
 siliconflow_api_handler.load_data()
 deepseek_api_handler.load_data()
 
-str = "\n 介绍下中国的江油"
+str = "\n 随着互联网技术的发展，大规模分布式系统在许多领域得到了广泛的应用。这些系统涉及到分布式数据库、微服务架构、云计算平台等，其复杂性和规模都在不断增长。数据一致性和系统的高可用性是设计和运维这些系统时面临的两个最重要的挑战。如何优化大规模分布式系统中的数据一致性和高可用性？"
 
 # 获取并打印响应文本
 
