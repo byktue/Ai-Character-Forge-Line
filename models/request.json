@@ -5,6 +5,7 @@
         "payload": {
             "model": "deepseek-ai/DeepSeek-V3",
             "messages": [
+                {"role": "system", "content": "You are a helpful assistant."},
                 {
                     "role": "user",
                     "content": "将以下问题分成三个步骤：中国大模型行业2025年将会迎来哪些机遇和挑战？"
@@ -34,7 +35,7 @@
             "model": "deepseek-chat",
             "messages": [
                 {"role": "system", "content": "You are a helpful assistant."},
-                {"role": "user", "content": "Hello!"}
+                {"role": "user", "content": ""}
             ],
             "stream": false
         },

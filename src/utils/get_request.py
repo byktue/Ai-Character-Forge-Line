@@ -41,12 +41,17 @@ class APIRequestHandler:
         else:
             print(f"未找到 id 为 {self.id} 的数据项")
 
-    def send_request(self):
+    def send_request(self, INPUT):
         # 发送 POST 请求
+        if INPUT:
+            for message in self.payload["messages"]:
+                if message["role"] == "user":
+                    message["content"] = INPUT
+            
         response = requests.request("POST", self.url, json=self.payload, headers=self.headers)
         return response
 
-    def get_response_text(self):
+    def get_response_text(self, INPUT = None):
         # 返回响应的文本
-        response = self.send_request()
+        response = self.send_request(INPUT)
         return response.text
