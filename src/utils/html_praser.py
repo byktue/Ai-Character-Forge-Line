@@ -10,6 +10,7 @@ class Node:
         self.attrs = attrs if attrs else {}  # 属性字典
         self.children = children if children else []  # 子节点列表
         self.text = text  # 文本内容
+        self.cache = []
 
     def __repr__(self):
         return f"Node(tag={self.tag}, attrs={self.attrs}, text={self.text}, children={len(self.children)})"
