@@ -1,0 +1,37 @@
+version = "1.0.0"
+
+[[api_providers]]
+id = "kourichat"
+name = "KouriChat API"
+url = "https://api.kourichat.com/v1"
+register_url = "https://api.kourichat.com/"
+status = "active"
+priority = 2
+apikey = ""
+
+[[api_providers]]
+id = "siliconflow"
+name = "硅基流动 API"
+url = "https://api.siliconflow.cn/v1/"
+register_url = "https://www.siliconflow.cn"
+status = "active"
+priority = 1
+apikey = ""
+
+[[api_providers]]
+id = "deepseek"
+name = "DeepSeek API"
+url = "https://api.deepseek.com/v1"
+register_url = "https://platform.deepseek.com"
+status = "active"
+priority = 3
+apikey = ""
+
+[[api_providers]]
+id = "ollama"
+name = "本地 Ollama"
+url = "http://localhost:11434/api/chat"
+register_url = "https://ollama.ai"
+status = "active"
+priority = 4
+apikey = ""
