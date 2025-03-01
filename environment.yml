@@ -26,6 +26,7 @@ dependencies:
       - certifi==2025.1.31
       - charset-normalizer==3.4.1
       - idna==3.10
+      - markdown==3.7
       - requests==2.32.3
       - toml==0.10.2
       - urllib3==2.3.0
