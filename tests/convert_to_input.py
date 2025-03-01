@@ -6,7 +6,7 @@ import markdown
 # 直接用绝对路径替换
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
 
-from utils.markdown_praser import MarkdownParser
+from utils.html_praser import HtmlParser
 
 # 打开文件并读取内容
 with open('data/avatar.md', 'r', encoding='utf-8') as file:
@@ -17,13 +17,4 @@ with open('data/avatar.md', 'r', encoding='utf-8') as file:
 # file_content = file_content.replace('\\', '\\\\')
 # file_content = file_content.replace('"', '\\"')
 
-# # 打印处理后的内容
-# parser = MarkdownParser()
-# parser.parse(file_content)
-
-# # 输出树形结构
-# parsed_tree = parser.get_parsed_tree()
-# parser.print_tree()
-
 html = markdown.markdown(file_content)
-print(html)
