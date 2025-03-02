@@ -67,7 +67,7 @@ class RootNode():
                 print(child.cache)
             if hasattr(node, "text") and node.text != "":
                 response_text = json.loads(deepseek_api_handler.get_response_text(INPUT=node.text))
-                node.cache.append({"复述: ": response_text['choices'][0]['message']['content']})
+                node.cache.append({"复述": response_text['choices'][0]['message']['content']})
         elif node.tag == "h3":
             pass
         elif node.tag == "h4":
@@ -75,7 +75,11 @@ class RootNode():
         elif node.tag == "root":
             deepseek_api_handler = APIRequestHandler('models/request.json', 'models/keys.toml', 'deepseek')
             deepseek_api_handler.load_data()
+            hint = ""
             for child in node.children:
                 print(child.cache)
+                hint = "\n ".join(f"{k}:{v}" for item in child.cache for k, v in item.items())
+            response_text = json.loads(deepseek_api_handler.get_response_text(INPUT=node.text + hint))
+            print(response_text['choices'][0]['message']['content'])
         else:
             raise ValueError(f"Unkown tag: {node.tag}")
