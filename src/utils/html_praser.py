@@ -28,8 +28,11 @@ class Node:
 
 class HtmlParser:
     def __init__(self, html):
-        self.html = html.strip()
+        self.html = self.remove_comments(html.strip())
         self.root = self.parse()
+
+    def remove_comments(self, html):
+        return re.sub(r'<!--.*?-->', '', html, flags=re.DOTALL)
 
     def parse(self):
         """解析HTML并构建DOM树"""

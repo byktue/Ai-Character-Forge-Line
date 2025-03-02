@@ -1,6 +1,7 @@
 import json
 import re
 from utils.get_request import APIRequestHandler
+from tqdm import tqdm
 
 class RootNode():
     def __init__(self, root):
@@ -119,6 +120,32 @@ class RootNode():
             pass
         elif node.tag == "h4":
             pass
+        elif node.tag == "textarea":
+            with open(node.attrs["src"], 'r', encoding='gbk', errors='ignore') as file:
+                content = file.read()
+            maxlength = int(node.attrs.get("maxlength", 1024))
+            lines = content.split("\n")  # 先按换行符拆分
+            chunks = []
+            current_chunk = ""
+
+            for line in lines:
+                if len(current_chunk) + len(line) + 1 <= maxlength:  # +1 是换行符
+                    current_chunk += line + "\n"
+                else:
+                    chunks.append(current_chunk.rstrip("\n"))  # 去除尾部多余换行
+                    current_chunk = line + "\n"
+            
+            if current_chunk:
+                chunks.append(current_chunk.rstrip("\n"))
+            chunks = chunks[:10]
+            deepseek_api_handler = APIRequestHandler('models/request.json', 'models/keys.toml', 'deepseek')
+            deepseek_api_handler.load_data()
+
+            for index, chunk in enumerate(tqdm(chunks, desc="Processing chunks")):  # 使用 tqdm 包装 chunks
+                response_text = json.loads(deepseek_api_handler.get_response_text(INPUT=node.attrs["target"] + "\n" + chunk))
+                # 将 chunk 的索引和响应内容一起存入 cache
+                node.cache.append({index: response_text['choices'][0]['message']['content']})
+
         elif node.tag == "root":
             deepseek_api_handler = APIRequestHandler('models/request.json', 'models/keys.toml', 'deepseek')
             deepseek_api_handler.load_data()
@@ -127,8 +154,8 @@ class RootNode():
                 for item in child.cache:
                     for k, v in item.items():
                         hint += f"\n {k}:{v}"
-
-            response_text = json.loads(deepseek_api_handler.get_response_text(INPUT=node.text + hint))
-            print(response_text['choices'][0]['message']['content'])
+            print(hint)
+            # response_text = json.loads(deepseek_api_handler.get_response_text(INPUT=node.text + hint))
+            # print(response_text['choices'][0]['message']['content'])
         else:
             raise ValueError(f"Unkown tag: {node.tag}")
