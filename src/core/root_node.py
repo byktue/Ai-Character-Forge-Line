@@ -71,7 +71,7 @@ class RootNode():
                 for item in child.cache:
                     for k, v in item.items():
                         index = index + 1
-                        hint += f"\n 第{index}: {k}:{v}"
+                        hint += f"\n {k}:{v}"
             if hasattr(node, "text") and node.text != "":
                 response_text = json.loads(deepseek_api_handler.get_response_text(INPUT=node.text + "\n" + hint))
                 node.cache.append({node_id : response_text['choices'][0]['message']['content']})
