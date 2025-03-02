@@ -37,7 +37,8 @@
                 {"role": "system", "content": "You are a helpful assistant."},
                 {"role": "user", "content": ""}
             ],
-            "stream": false
+            "stream": false,
+            "max_tokens": 512
         },
         "headers": {
             "Authorization": "Bearer ",

@@ -37,6 +37,7 @@ class RootNode():
                 print(f'  <{node.tag}> {node.text.strip()}')
     
     def run_a_node(self, node, text = None):
+        print(node.tag)
         matches = []
         if node and hasattr(node, "text"):
             pattern = r"\{\{(.*?)\}\}"
@@ -46,7 +47,8 @@ class RootNode():
             #         print(self.id_map[match])
         if node and hasattr(node, "children"):
             for child in node.children:
-                self.run_a_node(child)
+                if len(child.cache) == 0:
+                    self.run_a_node(child)
 
         if node.tag == "div":
             deepseek_api_handler = APIRequestHandler('models/request.json', 'models/keys.toml', 'deepseek')
@@ -56,13 +58,43 @@ class RootNode():
             if text is not None:
                 response_text = json.loads(deepseek_api_handler.get_response_text(INPUT=text + "\n" + node.text))
                 node.cache.append({node_id : response_text['choices'][0]['message']['content']})
-            pass
         elif node.tag == "p":
             pass
         elif node.tag == "ol":
-            pass
+            deepseek_api_handler = APIRequestHandler('models/request.json', 'models/keys.toml', 'deepseek')
+            deepseek_api_handler.load_data()
+            if "id" in node.attrs:
+                node_id = node.attrs["id"]
+            hint = ""
+            index = 0
+            for child in node.children:
+                for item in child.cache:
+                    for k, v in item.items():
+                        index = index + 1
+                        hint += f"\n 第{index}: {k}:{v}"
+            if hasattr(node, "text") and node.text != "":
+                response_text = json.loads(deepseek_api_handler.get_response_text(INPUT=node.text + "\n" + hint))
+                node.cache.append({node_id : response_text['choices'][0]['message']['content']})
+            else:
+                response_text = json.loads(deepseek_api_handler.get_response_text(INPUT=f"总结以下 {index} 点\n{hint}"))
+                node.cache.append({node_id : response_text['choices'][0]['message']['content']})
+                
         elif node.tag == "li":
-            pass
+            deepseek_api_handler = APIRequestHandler('models/request.json', 'models/keys.toml', 'deepseek')
+            deepseek_api_handler.load_data()
+            if len(matches) > 0:
+                for match in matches:
+                    for quote_node in self.id_map[match]:
+                        self.run_a_node(quote_node, node.text)
+            hint = ""
+            for child in node.children:
+                for item in child.cache:
+                    for k, v in item.items():
+                        hint += f"\n {k}:{v}"
+
+            if hasattr(node, "text") and node.text != "":
+                response_text = json.loads(deepseek_api_handler.get_response_text(INPUT=node.text + hint))
+                node.cache.append({"": response_text['choices'][0]['message']['content']})
         elif node.tag == "ul":
             pass
         elif node.tag == "h1":
@@ -76,10 +108,13 @@ class RootNode():
                         self.run_a_node(quote_node, node.text)
             hint = ""
             for child in node.children:
-                hint = "\n ".join(f"{k}:{v}" for item in child.cache for k, v in item.items())
+                for item in child.cache:
+                    for k, v in item.items():
+                        hint += f"\n {k}:{v}"
+
             if hasattr(node, "text") and node.text != "":
                 response_text = json.loads(deepseek_api_handler.get_response_text(INPUT=node.text + hint))
-                node.cache.append({"复述": response_text['choices'][0]['message']['content']})
+                node.cache.append({"": response_text['choices'][0]['message']['content']})
         elif node.tag == "h3":
             pass
         elif node.tag == "h4":
@@ -89,7 +124,10 @@ class RootNode():
             deepseek_api_handler.load_data()
             hint = ""
             for child in node.children:
-                hint = "\n ".join(f"{k}:{v}" for item in child.cache for k, v in item.items())
+                for item in child.cache:
+                    for k, v in item.items():
+                        hint += f"\n {k}:{v}"
+
             response_text = json.loads(deepseek_api_handler.get_response_text(INPUT=node.text + hint))
             print(response_text['choices'][0]['message']['content'])
         else:
