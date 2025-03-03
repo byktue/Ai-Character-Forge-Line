@@ -25,7 +25,6 @@ class Node:
             child.pretty_print(level + 1)
         print(f"{indent}</{self.tag}>")
 
-
 class HtmlParser:
     def __init__(self, html):
         self.html = self.remove_comments(html.strip())
