@@ -1,5 +1,5 @@
 import os
-import configparser
+import json
 import pdfplumber
 
 # ================== 从 PDF 提取文本函数 ==================
@@ -60,25 +60,28 @@ def process_folder(input_root, output_root):
 # ================== 配置管理模块 ==================
 def load_config():
     """加载配置文件并返回路径配置"""
-    config = configparser.ConfigParser()
     # 设置默认配置（当配置文件不存在时使用）
-    config['Paths'] = {
-        'INPUT_FOLDER': 'input_pdfs',
-        'OUTPUT_FOLDER': 'output_texts'
+    default_config = {
+        "INPUT_FOLDER": "input_pdfs",
+        "OUTPUT_FOLDER": "output_texts"
     }
 
     try:
         # 获取配置文件路径（支持跨文件夹）
         config_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'config')
-        config_path = os.path.join(config_dir, 'config.ini')
+        config_path = os.path.join(config_dir, 'config.json')
 
         # 尝试读取配置文件
-        if not config.read(config_path, encoding='utf-8'):
+        if os.path.exists(config_path):
+            with open(config_path, 'r', encoding='utf-8') as f:
+                config = json.load(f)
+        else:
             print("⚠️ 未找到配置文件，使用默认路径")
+            config = default_config
 
         # 获取配置值（带错误处理）
-        input_path = config.get('Paths', 'INPUT_FOLDER', fallback='input_pdfs')
-        output_path = config.get('Paths', 'OUTPUT_FOLDER', fallback='output_texts')
+        input_path = config.get('INPUT_FOLDER', 'input_pdfs')
+        output_path = config.get('OUTPUT_FOLDER', 'output_texts')
 
         # 路径标准化处理
         return (
@@ -94,9 +97,10 @@ if __name__ == "__main__":
     # 加载配置
     INPUT_FOLDER, OUTPUT_FOLDER = load_config()
 
-    # 路径验证
+    # 创建输入目录（如果不存在）
     if not os.path.exists(INPUT_FOLDER):
-        raise FileNotFoundError(f"输入目录不存在: {INPUT_FOLDER}")
+        os.makedirs(INPUT_FOLDER)
+        print(f"已创建输入目录: {INPUT_FOLDER}")
 
     # 创建输出目录（自动创建多级目录）
     os.makedirs(OUTPUT_FOLDER, exist_ok=True)
