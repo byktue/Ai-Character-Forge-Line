@@ -1,4 +1,19 @@
 {
-    "INPUT_FOLDER": "D:/BaiduNetdiskDownload/剧本杀",
-    "OUTPUT_FOLDER": "D:/BaiduNetdiskDownload/output"
+    
+    "photo_to_txt":{
+        "INPUT_FOLDER": "D:/BaiduNetdiskDownload/归途七万里",
+        "OUTPUT_FOLDER": "D:/BaiduNetdiskDownload/output_test"
+    },
+
+    "Text summaries":{
+        "INPUT_FOLDER": "D:/BaiduNetdiskDownload/output_test",
+        "OUTPUT_FOLDER": "D:/BaiduNetdiskDownload/output_test_2"
+    },
+
+    "shared_config": {
+        "encoding": "utf-8",
+        "DEEPSEEK_API_URL": "https://api.siliconflow.cn/v1/chat/completions",
+        "DEEPSEEK_API_KEY": "sk-zieigdeeconidojrwencrdvsejqfxaoqvbxeqbsrxmqinlna",
+        "DEEPSEEK_MODEL": "deepseek-ai/DeepSeek-V3"
+    }
 }

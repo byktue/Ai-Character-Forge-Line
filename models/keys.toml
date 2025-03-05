@@ -2,9 +2,9 @@ version = "1.0.0"
 
 [[api_providers]]
 id = "siliconflow"
-apikey = "sk-mjsrhxfjxhbwzsbosmhfyvwjlfcqfqsijlaclzwirzadehqy"
+apikey = "sk-zieigdeeconidojrwencrdvsejqfxaoqvbxeqbsrxmqinlna"
 
 [[api_providers]]
 id = "deepseek"
-apikey = "sk-b0593084ad634a4ba9862f846bc1b4ca"
+apikey = ""
 

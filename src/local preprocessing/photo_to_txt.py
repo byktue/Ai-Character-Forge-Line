@@ -57,8 +57,16 @@ def process_folder(input_root, output_root):
                     f.write(text)
                 print(f"已处理：{input_path} -> {output_path}")
 
+    # 检查并删除空的输出子文件夹
+    for root, dirs, files in os.walk(output_root, topdown=False):
+        for dir in dirs:
+            dir_path = os.path.join(root, dir)
+            if not os.listdir(dir_path):
+                os.rmdir(dir_path)
+                print(f"已删除空文件夹: {dir_path}")
+
 # ================== 配置管理模块 ==================
-def load_config():
+def load_config(plate):
     """加载配置文件并返回路径配置"""
     # 设置默认配置（当配置文件不存在时使用）
     default_config = {
@@ -67,21 +75,23 @@ def load_config():
     }
 
     try:
-        # 获取配置文件路径（支持跨文件夹）
-        config_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'config')
+        # 获取配置文件路径
+        project_root = os.path.dirname(os.path.dirname(__file__))
+        config_dir = os.path.join(project_root, 'config')
         config_path = os.path.join(config_dir, 'config.json')
 
         # 尝试读取配置文件
         if os.path.exists(config_path):
             with open(config_path, 'r', encoding='utf-8') as f:
                 config = json.load(f)
+            # 从 photo_to_txt 键下获取配置信息
+            photo_to_txt_config = config.get(plate, {})
+            input_path = photo_to_txt_config.get('INPUT_FOLDER', default_config['INPUT_FOLDER'])
+            output_path = photo_to_txt_config.get('OUTPUT_FOLDER', default_config['OUTPUT_FOLDER'])
         else:
             print("⚠️ 未找到配置文件，使用默认路径")
-            config = default_config
-
-        # 获取配置值（带错误处理）
-        input_path = config.get('INPUT_FOLDER', 'input_pdfs')
-        output_path = config.get('OUTPUT_FOLDER', 'output_texts')
+            input_path = default_config['INPUT_FOLDER']
+            output_path = default_config['OUTPUT_FOLDER']
 
         # 路径标准化处理
         return (
@@ -90,12 +100,12 @@ def load_config():
         )
     except Exception as e:
         print(f"❌ 配置读取失败: {str(e)}，使用默认路径")
-        return 'input_pdfs', 'output_texts'
+        return default_config['INPUT_FOLDER'], default_config['OUTPUT_FOLDER']
 
 # ================== 主程序入口 ==================
 if __name__ == "__main__":
     # 加载配置
-    INPUT_FOLDER, OUTPUT_FOLDER = load_config()
+    INPUT_FOLDER, OUTPUT_FOLDER = load_config("photo_to_txt")
 
     # 创建输入目录（如果不存在）
     if not os.path.exists(INPUT_FOLDER):
