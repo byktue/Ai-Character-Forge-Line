@@ -29,6 +29,7 @@ except KeyError as e:
     print("请检查 config.json 文件内容。")
     exit(1)
 
+# 定义函数遍历文件夹，找出并处理尚未处理的文件
 def traverse_folder(input_folder, output_folder):
     unprocessed_files = find_unprocessed_files(input_folder, output_folder)
     for input_file_path, output_file_path in unprocessed_files:

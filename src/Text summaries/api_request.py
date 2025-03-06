@@ -1,39 +1,51 @@
 import requests
 import time
 
-def extract_main_characters(DEEPSEEK_API_URL, DEEPSEEK_API_KEY, DEEPSEEK_MODEL, text):
+# 该函数用于从 DeepSeek API 提取文本中发生的事件
+# 参数：
+# DEEPSEEK_API_URL：DeepSeek API 的 URL
+# DEEPSEEK_API_KEY：DeepSeek API 的密钥
+# DEEPSEEK_MODEL：DeepSeek API 使用的模型名称
+# text：需要提取事件的文本
+# 返回值：事件列表，如果请求失败则返回空列表
+def extract_events(DEEPSEEK_API_URL, DEEPSEEK_API_KEY, DEEPSEEK_MODEL, text):
+    # 请求头，包含内容类型和授权信息
     headers = {
         "Content-Type": "application/json",
         "Authorization": f"Bearer {DEEPSEEK_API_KEY}"
     }
+    # 请求消息，包含用户指令和文本
     messages = [
         {
             "role": "user",
-            "content": f"请提取以下文本中每个人物的所有可能名称，以人物为单位列出，格式为人物标准名称:别名1,别名2,... 。示例：张三:小张,三哥 。文本：{text}"
+            "content": f"请提取以下文本中发生的事件：{text}"
         }
     ]
+    # 请求数据，包含模型名称和消息
     data = {
         "model": DEEPSEEK_MODEL,
         "messages": messages
     }
-    max_retries = 5  # 最大重试次数
-    retry_delay = 5  # 每次重试的延迟时间（秒）
+    # 最大重试次数
+    max_retries = 5  
+    # 每次重试的延迟时间（秒）
+    retry_delay = 5  
+    # 进行重试
     for attempt in range(max_retries):
-        print(f"正在向 DeepSeek API 发起提取主要人物名称请求（第 {attempt + 1} 次尝试）...")
+        print(f"正在向 DeepSeek API 发起提取事件请求（第 {attempt + 1} 次尝试）...")
         try:
+            # 发送 POST 请求
             response = requests.post(DEEPSEEK_API_URL, headers=headers, json=data)
+            # 检查响应状态码，如果不是 200 则抛出异常
             response.raise_for_status()
+            # 获取响应的 JSON 数据
             result = response.json()
-            characters_str = result["choices"][0]["message"]["content"]
-            character_mapping = {}
-            for line in characters_str.splitlines():
-                if ':' in line:
-                    main_name, aliases = line.split(':')
-                    all_names = [main_name] + aliases.split(',')
-                    for name in all_names:
-                        character_mapping[name] = main_name
-            print("成功从 DeepSeek API 获取到主要人物名称映射。")
-            return character_mapping
+            # 提取事件信息
+            events_str = result["choices"][0]["message"]["content"]
+            # 按行分割字符串，得到事件列表
+            events = events_str.splitlines()
+            print("成功从 DeepSeek API 获取到事件信息。")
+            return events
         except requests.HTTPError as e:
             print(f"请求 DeepSeek API 时出现 HTTP 错误（类型: {type(e).__name__}）: {e}")
             if e.response.status_code == 429:
@@ -45,43 +57,4 @@ def extract_main_characters(DEEPSEEK_API_URL, DEEPSEEK_API_KEY, DEEPSEEK_MODEL, 
             print(f"请求 DeepSeek API 时出现请求异常（类型: {type(e).__name__}）: {e}")
             break
     print("达到最大重试次数，请求失败。")
-    return {}
-
-def extract_summary(DEEPSEEK_API_URL, DEEPSEEK_API_KEY, DEEPSEEK_MODEL, text):
-    headers = {
-        "Content-Type": "application/json",
-        "Authorization": f"Bearer {DEEPSEEK_API_KEY}"
-    }
-    messages = [
-        {
-            "role": "user",
-            "content": f"请总结以下文本中的主要人物、人物性格、外貌形象、发生的事件、出现的人物话语、口头禅：{text}"
-        }
-    ]
-    data = {
-        "model": DEEPSEEK_MODEL,
-        "messages": messages
-    }
-    max_retries = 5  # 最大重试次数
-    retry_delay = 5  # 每次重试的延迟时间（秒）
-    for attempt in range(max_retries):
-        print(f"正在向 DeepSeek API 发起请求（第 {attempt + 1} 次尝试）...")
-        try:
-            response = requests.post(DEEPSEEK_API_URL, headers=headers, json=data)
-            response.raise_for_status()
-            result = response.json()
-            summary = result["choices"][0]["message"]["content"]
-            print("成功从 DeepSeek API 获取到响应。")
-            return summary
-        except requests.HTTPError as e:
-            print(f"请求 DeepSeek API 时出现 HTTP 错误（类型: {type(e).__name__}）: {e}")
-            if e.response.status_code == 429:
-                print(f"请求频率过高，将在 {retry_delay} 秒后重试（第 {attempt + 1} 次尝试）...")
-                time.sleep(retry_delay)
-            else:
-                break
-        except requests.RequestException as e:
-            print(f"请求 DeepSeek API 时出现请求异常（类型: {type(e).__name__}）: {e}")
-            break
-    print("达到最大重试次数，请求失败。")
-    return None
+    return []
