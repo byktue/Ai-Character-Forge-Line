@@ -7,7 +7,12 @@
 
     "Text summaries":{
         "INPUT_FOLDER": "D:/BaiduNetdiskDownload/output_test",
-        "OUTPUT_FOLDER": "D:/BaiduNetdiskDownload/output_test_3"
+        "APPEARANCE_OUTPUT_FOLDER": "D:/BaiduNetdiskDownload/output_appearance",
+        "EVENTS_OUTPUT_FOLDER": "D:/BaiduNetdiskDownload/output_events",
+        "IDENTITY_OUTPUT_FOLDER": "D:/BaiduNetdiskDownload/output_identity",
+        "NAME_OUTPUT_FOLDER": "D:/BaiduNetdiskDownload/output_name",
+        "PERSONALITY_OUTPUT_FOLDER": "D:/BaiduNetdiskDownload/output_personality",
+        "UTTERANCE_OUTPUT_FOLDER": "D:/BaiduNetdiskDownload/output_utterance"
     },
 
     "shared_config": {

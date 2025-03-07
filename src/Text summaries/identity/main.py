@@ -23,7 +23,7 @@ except KeyError as e:
 try:
     text_summaries_config = config["Text summaries"]
     INPUT_FOLDER = text_summaries_config["INPUT_FOLDER"]
-    OUTPUT_FOLDER = text_summaries_config["OUTPUT_FOLDER"]
+    OUTPUT_FOLDER = text_summaries_config["IDENTITY_OUTPUT_FOLDER"]
 except KeyError as e:
     print(f"配置文件中缺少必要的键: {e}")
     print("请检查 config.json 文件内容。")
