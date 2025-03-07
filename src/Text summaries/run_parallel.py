@@ -1,4 +1,5 @@
 import os
+import subprocess
 import concurrent.futures
 
 def run_main_py(file_path):
@@ -7,11 +8,12 @@ def run_main_py(file_path):
     :param file_path: main.py 文件的完整路径
     """
     try:
-        # 构造执行 main.py 文件的命令
-        command = f"python {file_path}"
-        # 执行命令
-        os.system(command)
-        print(f"成功执行 {file_path}")
+        # 使用 subprocess.run 来执行命令
+        result = subprocess.run(['python', file_path], check=True)
+        if result.returncode == 0:
+            print(f"成功执行 {file_path}")
+        else:
+            print(f"执行 {file_path} 时出错，返回码: {result.returncode}")
     except Exception as e:
         print(f"执行 {file_path} 时出错: {e}")
 
