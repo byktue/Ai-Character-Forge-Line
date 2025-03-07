@@ -1,6 +1,7 @@
 import os
 import subprocess
 import concurrent.futures
+import time
 
 def run_main_py(file_path):
     """
@@ -18,6 +19,7 @@ def run_main_py(file_path):
         print(f"执行 {file_path} 时出错: {e}")
 
 def main():
+    start_time = time.time()  # 记录开始时间
     base_dir = os.path.dirname(os.path.abspath(__file__))  # 获取当前文件所在目录
     main_py_files = []
 
@@ -33,8 +35,15 @@ def main():
                 main_py_files.append(file_path)
 
     # 使用线程池并行执行 main.py 文件
-    with concurrent.futures.ThreadPoolExecutor() as executor:
-        executor.map(run_main_py, main_py_files)
+    try:
+        with concurrent.futures.ThreadPoolExecutor() as executor:
+            executor.map(run_main_py, main_py_files)
+    except KeyboardInterrupt:
+        print("程序被中断")
+    finally:
+        end_time = time.time()  # 记录结束时间
+        elapsed_time = end_time - start_time  # 计算运行时间
+        print(f"程序运行时间: {elapsed_time:.2f} 秒")
 
 if __name__ == "__main__":
     main()
