@@ -1,7 +1,7 @@
 import os
 import requests
 
-def api_sum(file_path, output_file_path, API_URL, API_KEY, MODEL):
+def utterance_sum(file_path, output_file_path, API_URL, API_KEY, MODEL , AVATAR):
     headers = {
         "Content-Type": "application/json",
         "Authorization": f"Bearer {API_KEY}"
@@ -14,7 +14,7 @@ def api_sum(file_path, output_file_path, API_URL, API_KEY, MODEL):
         data = {
             "model": MODEL,
             "messages": [
-                {"role": "system", "content": "请去除文本中的重复信息"},
+                {"role": "system", "content": f"请提取文本中 {AVATAR} 的详细话语"},
                 {"role": "user", "content": content}
             ]
         }

@@ -16,7 +16,9 @@
         "UTTERANCE_OUTPUT_FOLDER": "E:/桌面/Project/Ai-Character-Forge-Line/data/test_data/output_utterance",
         
         "COMBINATION": "E:/桌面/Project/Ai-Character-Forge-Line/data/test_data/combination",
-        "API_SUM":"E:/桌面/Project/Ai-Character-Forge-Line/data/test_data/api_sum"
+        "API_SUM":"E:/桌面/Project/Ai-Character-Forge-Line/data/test_data/api_sum",
+
+        "FINAL_OUTPUT":"E:/桌面/Project/Ai-Character-Forge-Line/data/test_data/final_output"
     },
 
     "shared_config": {
