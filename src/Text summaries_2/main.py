@@ -1,4 +1,5 @@
 import os
+import time
 from config_loader import load_config
 from combination import combination
 from api_sum import api_sum
@@ -53,6 +54,7 @@ def one_part_sum(PART):
     PART_SUM = os.path.join(API_SUM, f"{PART}.txt")
     combination(INPUT_FOLDER, PART_COMBINATION)
     api_sum(PART_COMBINATION, PART_SUM, DEEPSEEK_API_URL, DEEPSEEK_API_KEY)
+    time.sleep(10)  # 每次处理完一个文件后等待 10 秒
     return None
 
 if __name__ == "__main__":

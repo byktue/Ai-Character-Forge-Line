@@ -1,22 +1,22 @@
 {
     
     "photo_to_txt":{
-        "INPUT_FOLDER": "D:/BaiduNetdiskDownload/归途七万里",
-        "OUTPUT_FOLDER": "D:/BaiduNetdiskDownload/output_test"
+        "INPUT_FOLDER": "E:/桌面/Project/Ai-Character-Forge-Line/data/test_data/归途七万里",
+        "OUTPUT_FOLDER": "E:/桌面/Project/Ai-Character-Forge-Line/data/test_data/output_test"
     },
 
     "Text summaries":{
-        "INPUT_FOLDER": "D:/BaiduNetdiskDownload/output_test",
+        "INPUT_FOLDER": "E:/桌面/Project/Ai-Character-Forge-Line/data/test_data/output_test",
 
-        "APPEARANCE_OUTPUT_FOLDER": "D:/BaiduNetdiskDownload/output_appearance",
-        "EVENTS_OUTPUT_FOLDER": "D:/BaiduNetdiskDownload/output_events",
-        "IDENTITY_OUTPUT_FOLDER": "D:/BaiduNetdiskDownload/output_identity",
-        "NAME_OUTPUT_FOLDER": "D:/BaiduNetdiskDownload/output_name",
-        "PERSONALITY_OUTPUT_FOLDER": "D:/BaiduNetdiskDownload/output_personality",
-        "UTTERANCE_OUTPUT_FOLDER": "D:/BaiduNetdiskDownload/output_utterance",
+        "APPEARANCE_OUTPUT_FOLDER": "E:/桌面/Project/Ai-Character-Forge-Line/data/test_data/output_appearance",
+        "EVENTS_OUTPUT_FOLDER": "E:/桌面/Project/Ai-Character-Forge-Line/data/test_data/output_events",
+        "IDENTITY_OUTPUT_FOLDER": "E:/桌面/Project/Ai-Character-Forge-Line/data/test_data/output_identity",
+        "NAME_OUTPUT_FOLDER": "E:/桌面/Project/Ai-Character-Forge-Line/data/test_data/output_name",
+        "PERSONALITY_OUTPUT_FOLDER": "E:/桌面/Project/Ai-Character-Forge-Line/data/test_data/output_personality",
+        "UTTERANCE_OUTPUT_FOLDER": "E:/桌面/Project/Ai-Character-Forge-Line/data/test_data/output_utterance",
         
-        "COMBINATION": "D:/BaiduNetdiskDownload/combination",
-        "API_SUM":"D:/BaiduNetdiskDownload/api_sum"
+        "COMBINATION": "E:/桌面/Project/Ai-Character-Forge-Line/data/test_data/combination",
+        "API_SUM":"E:/桌面/Project/Ai-Character-Forge-Line/data/test_data/api_sum"
     },
 
     "shared_config": {
