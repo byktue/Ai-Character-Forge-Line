@@ -2,7 +2,6 @@ import os
 import time
 from config_loader import load_config
 from combination import combination
-from api_sum import api_sum
 
 # 加载配置
 config = load_config()
@@ -32,7 +31,6 @@ try:
     UTTERANCE_OUTPUT_FOLDER = text_summaries_config["UTTERANCE_OUTPUT_FOLDER"]
 
     COMBINATION = text_summaries_config["COMBINATION"]
-    API_SUM = text_summaries_config["API_SUM"]
     
 except KeyError as e:
     print(f"配置文件中缺少必要的键: {e}")
@@ -51,9 +49,7 @@ output_folder_mapping = {
 def one_part_sum(PART):
     INPUT_FOLDER = output_folder_mapping.get(PART)
     PART_COMBINATION = os.path.join(COMBINATION, f"{PART}.txt")
-    PART_SUM = os.path.join(API_SUM, f"{PART}.txt")
     combination(INPUT_FOLDER, PART_COMBINATION)
-    api_sum(PART_COMBINATION, PART_SUM, DEEPSEEK_API_URL, DEEPSEEK_API_KEY)
     time.sleep(10)  # 每次处理完一个文件后等待 10 秒
     return None
 
