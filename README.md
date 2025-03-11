@@ -4,7 +4,6 @@
 多次、多线程调用现有的ai模型，比如deepseek，根据已有文本，批量化、精细化、精准化生成人设
 Repeatedly and multi-threadedly call the existing AI model (DeepSeek) to generate character personas in a batch, refined, and precise manner based on the provided text.
 
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Python 3.9+](https://img.shields.io/badge/Python-3.9+-green.svg)](https://www.python.org/)
 
 ## 🚀 项目概述
