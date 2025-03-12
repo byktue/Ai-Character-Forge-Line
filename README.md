@@ -19,15 +19,15 @@ Repeatedly and multi-threadedly call the existing AI model (DeepSeek) to generat
 
 #### 项目主要作者：byktue
 
-所在学校：华东师范大学
-所在院系与专业：数据科学与工程学院  数据科学与大数据
+- 所在学校：华东师范大学
+- 所在院系与专业：数据科学与工程学院  数据科学与大数据
 
 **联系方式：**
-邮箱： yangbyktue@gmail.com
+- 邮箱： yangbyktue@gmail.com
 	10235501403@stu.ecnu.edu.cn
 	228900195@qq.com
-微信：wx228900195
-QQ：228900195
+- 微信：wx228900195
+- QQ：228900195
 
 ##### 项目合作者：duringbug
 
