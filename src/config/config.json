@@ -1,30 +1,31 @@
 {
     
     "photo_to_txt":{
-        "INPUT_FOLDER": "E:/桌面/Project/Ai-Character-Forge-Line/data/test_data/归途七万里",
-        "OUTPUT_FOLDER": "E:/桌面/Project/Ai-Character-Forge-Line/data/test_data/output_test"
+        "INPUT_FOLDER": "data/test_data/归途七万里",
+        "OUTPUT_FOLDER": "data/test_data/output_test"
     },
 
     "Text summaries":{
-        "INPUT_FOLDER": "E:/桌面/Project/Ai-Character-Forge-Line/data/test_data/output_test",
+        "INPUT_FOLDER": "data/test_data/output_test",
 
-        "APPEARANCE_OUTPUT_FOLDER": "E:/桌面/Project/Ai-Character-Forge-Line/data/test_data/output_appearance",
-        "EVENTS_OUTPUT_FOLDER": "E:/桌面/Project/Ai-Character-Forge-Line/data/test_data/output_events",
-        "IDENTITY_OUTPUT_FOLDER": "E:/桌面/Project/Ai-Character-Forge-Line/data/test_data/output_identity",
-        "NAME_OUTPUT_FOLDER": "E:/桌面/Project/Ai-Character-Forge-Line/data/test_data/output_name",
-        "PERSONALITY_OUTPUT_FOLDER": "E:/桌面/Project/Ai-Character-Forge-Line/data/test_data/output_personality",
-        "UTTERANCE_OUTPUT_FOLDER": "E:/桌面/Project/Ai-Character-Forge-Line/data/test_data/output_utterance",
+        "APPEARANCE_OUTPUT_FOLDER": "data/test_data/output_appearance",
+        "EVENTS_OUTPUT_FOLDER": "data/test_data/output_events",
+        "IDENTITY_OUTPUT_FOLDER": "data/test_data/output_identity",
+        "NAME_OUTPUT_FOLDER": "data/test_data/output_name",
+        "PERSONALITY_OUTPUT_FOLDER": "data/test_data/output_personality",
+        "UTTERANCE_OUTPUT_FOLDER": "data/test_data/output_utterance",
         
-        "COMBINATION": "E:/桌面/Project/Ai-Character-Forge-Line/data/test_data/combination",
-        "API_SUM":"E:/桌面/Project/Ai-Character-Forge-Line/data/test_data/api_sum",
+        "COMBINATION": "data/test_data/combination",
+        "API_SUM":"data/test_data/api_sum",
 
-        "FINAL_OUTPUT":"E:/桌面/Project/Ai-Character-Forge-Line/data/test_data/final_output"
+        "FINAL_OUTPUT":"data/test_data/final_output"
     },
 
     "shared_config": {
         "encoding": "utf-8",
         "DEEPSEEK_API_URL": "https://api.siliconflow.cn/v1/chat/completions",
         "DEEPSEEK_API_KEY": "sk-zieigdeeconidojrwencrdvsejqfxaoqvbxeqbsrxmqinlna",
-        "DEEPSEEK_MODEL": "deepseek-ai/DeepSeek-V3"
+        "DEEPSEEK_MODEL": "deepseek-ai/DeepSeek-V3",
+        "Description": "使用的是流动硅基（siliconflow）提供的deepseek的api"
     }
 }
