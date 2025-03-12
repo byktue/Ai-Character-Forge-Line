@@ -1,5 +1,4 @@
 import os
-import random
 from config_loader import load_config
 from events import events_sum
 from identity import identity_sum
