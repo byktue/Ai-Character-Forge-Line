@@ -24,7 +24,7 @@
     "shared_config": {
         "encoding": "utf-8",
         "DEEPSEEK_API_URL": "https://api.siliconflow.cn/v1/chat/completions",
-        "DEEPSEEK_API_KEY": "sk-zieigdeeconidojrwencrdvsejqfxaoqvbxeqbsrxmqinlna",
+        "DEEPSEEK_API_KEY": "",
         "DEEPSEEK_MODEL": "deepseek-ai/DeepSeek-V3",
         "Description": "使用的是流动硅基（siliconflow）提供的deepseek的api"
     }
