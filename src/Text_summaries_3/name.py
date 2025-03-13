@@ -14,7 +14,7 @@ def name_sum(file_path, output_file_path, API_URL, API_KEY, MODEL , AVATAR):
         data = {
             "model": MODEL,
             "messages": [
-                {"role": "system", "content": f"请提取文本中与 {AVATAR} 的名称及别名，如果有名称转变，请标注出转变的大概的事件描述"},
+                {"role": "system", "content": f"请提取文本中 {AVATAR} 的名称及别名，如果有名称转变，请标注出转变的大概的事件描述"},
                 {"role": "user", "content": content}
             ]
         }

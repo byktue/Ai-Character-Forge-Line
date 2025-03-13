@@ -47,11 +47,17 @@ def process_folder(input_root, output_root):
         for file in files:
             if file.lower().endswith('.pdf'):
                 input_path = os.path.join(root, file)
-                # 提取文字
-                text = extract_text_from_pdf(input_path)
                 # 生成输出路径
                 filename = os.path.splitext(file)[0] + '.txt'
                 output_path = os.path.join(output_dir, filename)
+
+                # 检查输出文件是否存在且非空
+                if os.path.exists(output_path) and os.path.getsize(output_path) > 0:
+                    print(f"跳过已存在且非空的文件: {output_path}")
+                    continue
+
+                # 提取文字
+                text = extract_text_from_pdf(input_path)
                 # 保存文本
                 with open(output_path, 'w', encoding='utf-8') as f:
                     f.write(text)
