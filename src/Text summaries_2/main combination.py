@@ -53,10 +53,13 @@ def one_part_sum(PART):
     time.sleep(10)  # 每次处理完一个文件后等待 10 秒
     return None
 
-if __name__ == "__main__":
+def combination_main():
     one_part_sum("APPEARANCE")
     one_part_sum("EVENTS")
     one_part_sum("IDENTITY")
     one_part_sum("NAME")
     one_part_sum("PERSONALITY")
     one_part_sum("UTTERANCE")
+
+if __name__ == "__main__":
+    combination_main()

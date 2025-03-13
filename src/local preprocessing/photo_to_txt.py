@@ -102,8 +102,7 @@ def load_config(plate):
         print(f"❌ 配置读取失败: {str(e)}，使用默认路径")
         return default_config['INPUT_FOLDER'], default_config['OUTPUT_FOLDER']
 
-# ================== 主程序入口 ==================
-if __name__ == "__main__":
+def pdf_to_txt():
     # 加载配置
     INPUT_FOLDER, OUTPUT_FOLDER = load_config("photo_to_txt")
 
@@ -123,3 +122,8 @@ if __name__ == "__main__":
     print("\n=== 开始处理 PDF 文件 ===")
     process_folder(INPUT_FOLDER, OUTPUT_FOLDER)
     print("=== 处理完成 ===")
+
+
+# ================== 主程序入口 ==================
+if __name__ == "__main__":
+    pdf_to_txt()

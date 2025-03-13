@@ -18,7 +18,7 @@ def run_main_py(file_path):
     except Exception as e:
         print(f"执行 {file_path} 时出错: {e}")
 
-def main():
+def Text_1_main():
     start_time = time.time()  # 记录开始时间
     base_dir = os.path.dirname(os.path.abspath(__file__))  # 获取当前文件所在目录
     main_py_files = []
@@ -46,4 +46,4 @@ def main():
         print(f"程序运行时间: {elapsed_time:.2f} 秒")
 
 if __name__ == "__main__":
-    main()
+    Text_1_main()
