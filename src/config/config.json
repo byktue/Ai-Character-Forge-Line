@@ -1,24 +1,24 @@
 {
     
     "photo_to_txt":{
-        "INPUT_FOLDER": "data/test_data/归途七万里",
-        "OUTPUT_FOLDER": "data/test_data/output_test"
+        "INPUT_FOLDER": "data/input",
+        "OUTPUT_FOLDER": "data/process_data/photo_to_txt_output"
     },
 
     "Text summaries":{
-        "INPUT_FOLDER": "data/test_data/output_test",
+        "INPUT_FOLDER": "data/process_data/photo_to_txt_output",
 
-        "APPEARANCE_OUTPUT_FOLDER": "data/test_data/output_appearance",
-        "EVENTS_OUTPUT_FOLDER": "data/test_data/output_events",
-        "IDENTITY_OUTPUT_FOLDER": "data/test_data/output_identity",
-        "NAME_OUTPUT_FOLDER": "data/test_data/output_name",
-        "PERSONALITY_OUTPUT_FOLDER": "data/test_data/output_personality",
-        "UTTERANCE_OUTPUT_FOLDER": "data/test_data/output_utterance",
+        "APPEARANCE_OUTPUT_FOLDER": "data/process_data/output_appearance",
+        "EVENTS_OUTPUT_FOLDER": "data/process_data/output_events",
+        "IDENTITY_OUTPUT_FOLDER": "data/process_data/output_identity",
+        "NAME_OUTPUT_FOLDER": "data/process_data/output_name",
+        "PERSONALITY_OUTPUT_FOLDER": "data/process_data/output_personality",
+        "UTTERANCE_OUTPUT_FOLDER": "data/process_data/output_utterance",
         
-        "COMBINATION": "data/test_data/combination",
-        "API_SUM":"data/test_data/api_sum",
+        "COMBINATION": "data/process_data/combination",
+        "API_SUM":"data/process_data/api_sum",
 
-        "FINAL_OUTPUT":"data/test_data/final_output"
+        "FINAL_OUTPUT":"data/final_output"
     },
 
     "shared_config": {

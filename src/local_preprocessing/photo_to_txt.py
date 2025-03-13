@@ -41,6 +41,12 @@ def process_folder(input_root, output_root):
         # 创建对应的输出目录
         relative_path = os.path.relpath(root, input_root)
         output_dir = os.path.join(output_root, relative_path)
+
+        # 检查输出目录是否已经存在
+        if os.path.exists(output_dir) and os.path.isdir(output_dir):
+            print(f"跳过已存在的输出目录: {output_dir}")
+            continue
+
         os.makedirs(output_dir, exist_ok=True)
 
         # 处理文件

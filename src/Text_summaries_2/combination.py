@@ -5,7 +5,7 @@ def combination(folder_path, output_file):
     combined_content = ""
 
     # 遍历文件夹中的所有文件
-    for root, dirs, files in os.walk(folder_path):
+    for root, files in os.walk(folder_path):
         for file in files:
             file_path = os.path.join(root, file)
             try:
