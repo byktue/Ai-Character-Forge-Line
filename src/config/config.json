@@ -5,27 +5,51 @@
         "OUTPUT_FOLDER": "data/process_data/photo_to_txt_output"
     },
 
-    "Text summaries":{
-        "INPUT_FOLDER": "data/process_data/photo_to_txt_output",
-
-        "APPEARANCE_OUTPUT_FOLDER": "data/process_data/output_appearance",
-        "EVENTS_OUTPUT_FOLDER": "data/process_data/output_events",
-        "IDENTITY_OUTPUT_FOLDER": "data/process_data/output_identity",
-        "NAME_OUTPUT_FOLDER": "data/process_data/output_name",
-        "PERSONALITY_OUTPUT_FOLDER": "data/process_data/output_personality",
-        "UTTERANCE_OUTPUT_FOLDER": "data/process_data/output_utterance",
-        
-        "COMBINATION": "data/process_data/combination",
-        "API_SUM":"data/process_data/api_sum",
-
-        "FINAL_OUTPUT":"data/final_output"
-    },
-
     "shared_config": {
         "encoding": "utf-8",
         "DEEPSEEK_API_URL": "https://api.siliconflow.cn/v1/chat/completions",
         "DEEPSEEK_API_KEY": "sk-zieigdeeconidojrwencrdvsejqfxaoqvbxeqbsrxmqinlna",
         "DEEPSEEK_MODEL": "deepseek-ai/DeepSeek-V3",
         "Description": "使用的是流动硅基（siliconflow）提供的deepseek的api"
+    },
+
+    "Text summaries":{
+        "INPUT_FOLDER": "data/process_data/photo_to_txt_output",
+        "OUTPUT_FOLDER": "data/process_data/Text_1",
+
+        "appearance":{
+            "api_content": "请提取以下文本中主要人物的外貌特征：",
+            "Description":"外貌特征"
+        },
+
+        "events":{
+            "api_content": "请提取以下文本中发生的事件：",
+            "Description":"事件信息"
+        },
+
+        "identity":{
+            "api_content": "请提取以下文本中主要人物的角色身份，并标注出来转变节点的概述：",
+            "Description":"角色身份"
+        },
+
+        "name":{
+            "api_content": "请提取以下文本中主要人物的名称及别名，如果有名称转变，请标注出转变的大概的事件描述：",
+            "Description":"名称信息"
+        },
+
+        "personality":{
+            "api_content": "请提取以下文本中主要人物的性格特点：",
+            "Description":"性格特点"
+        },
+
+        "utterance":{
+            "api_content": "请提取以下文本中角色的话语：",
+            "Description":"角色话语"
+        },
+        
+        "COMBINATION": "data/process_data/combination",
+        "API_SUM":"data/process_data/api_sum",
+
+        "FINAL_OUTPUT":"data/final_output"
     }
 }

@@ -94,13 +94,13 @@ def final_output():
     if not os.path.exists(directory):
         os.makedirs(directory)
     try:
-        with open(target_file, 'w', encoding='utf-8') as target:
+        with open(target_file, 'w', encoding) as target:
             target.write("#任务\n在下文中，我会给你几个步骤与模块，你需要按照这些固定的步骤严格执行此文本中的所有模块。\n\n- 步骤1获取：用户每次输入的内容都会被视为一个总任务，你需要精准获取总任务的所有内容，并且按照我以下给你的步骤处理总任务。\n- 步骤2阅读：严格执行通读一遍此文本全文，对文件内容里的所有模块获得了解。\n- 步骤3编译：每个模块都会给你一个指定的次任务，你在并行处理这些模块时需要充分理解并执行模块对你的要求，并且记住每个模块次任务的执行结果。\n- 步骤4链接：在执行完毕每个模块次任务后，将每个次任务的执行结果进行链接，融合生成总任务的输出结果。\n- 步骤5发送：将你融合生成的总任务输出结果按照用户指定的格式发送。例如，我现在给你一个输出格式：将总任务输出结果中的每句话后使用\分隔，每次发送一句话。\n 你需要扮演指定角色，根据角色的经历，模仿她/他的语气进行线上的日常对话。\n遇到复杂问题时能迅速切换至‘高性能模式’，用专业术语给出清晰解答后再恢复正常语气\n\n")
             target.write(f"\n#你是{AVATAR}，你是{AVATAR}，你是{AVATAR}，以下是有关于你的信息：\n")
             
             PART = "NAME"
             PART_API_SUM = os.path.join(API_SUM, f"{DRAMA}/{AVATAR}/{PART}.txt")
-            with open(PART_API_SUM, 'r', encoding='utf-8') as source_file:
+            with open(PART_API_SUM, 'r', encoding) as source_file:
                 # 先写入自定义内容
                 target.write("\n\n#名称及别名：\n")
                 # 逐行读取源文件并写入目标文件
@@ -110,7 +110,7 @@ def final_output():
                 
             PART = "IDENTITY"
             PART_API_SUM = os.path.join(API_SUM, f"{DRAMA}/{AVATAR}/{PART}.txt")
-            with open(PART_API_SUM, 'r', encoding='utf-8') as source_file:
+            with open(PART_API_SUM, 'r', encoding) as source_file:
                 # 先写入自定义内容
                 target.write("\n\n#身份信息：\n")
                 # 逐行读取源文件并写入目标文件
@@ -120,7 +120,7 @@ def final_output():
             
             PART = "APPEARANCE"
             PART_API_SUM = os.path.join(API_SUM, f"{DRAMA}/{AVATAR}/{PART}.txt")
-            with open(PART_API_SUM, 'r', encoding='utf-8') as source_file:
+            with open(PART_API_SUM, 'r', encoding) as source_file:
                 # 先写入自定义内容
                 target.write("\n\n#外貌特征：\n")
                 # 逐行读取源文件并写入目标文件
@@ -130,7 +130,7 @@ def final_output():
             
             PART = "PERSONALITY"
             PART_API_SUM = os.path.join(API_SUM, f"{DRAMA}/{AVATAR}/{PART}.txt")
-            with open(PART_API_SUM, 'r', encoding='utf-8') as source_file:
+            with open(PART_API_SUM, 'r', encoding) as source_file:
                 # 先写入自定义内容
                 target.write("\n\n#性格特点：\n")
                 # 逐行读取源文件并写入目标文件
@@ -140,7 +140,7 @@ def final_output():
             
             PART = "EVENTS"
             PART_API_SUM = os.path.join(API_SUM, f"{DRAMA}/{AVATAR}/{PART}.txt")
-            with open(PART_API_SUM, 'r', encoding='utf-8') as source_file:
+            with open(PART_API_SUM, 'r', encoding) as source_file:
                 # 先写入自定义内容
                 target.write("\n\n#经历的事件：\n")
                 # 逐行读取源文件并写入目标文件
@@ -150,7 +150,7 @@ def final_output():
             
             PART = "UTTERANCE"
             PART_API_SUM = os.path.join(API_SUM, f"{DRAMA}/{AVATAR}/{PART}.txt")
-            with open(PART_API_SUM, 'r', encoding='utf-8') as source_file:
+            with open(PART_API_SUM, 'r', encoding) as source_file:
                 # 先写入自定义内容 
                 target.write("\n\n#语录（口头禅）：\n")
                 # 逐行读取源文件并写入目标文件
