@@ -29,14 +29,14 @@
     "parts":{
 
         "parts": [
-            "appearance",
-            "events",
-            "identity",
             "name",
+            "identity",
+            "appearance",
             "personality",
+            "events",
             "utterance"
         ],
-        
+
         "appearance":{
             "api_content": "请提取以下文本中主要人物的外貌特征：",
             "Description":"外貌特征"
@@ -44,7 +44,7 @@
 
         "events":{
             "api_content": "请提取以下文本中发生的事件：",
-            "Description":"事件信息"
+            "Description":"有关事件"
         },
 
         "identity":{
@@ -53,8 +53,8 @@
         },
 
         "name":{
-            "api_content": "请提取以下文本中主要人物的名称及别名，如果有名称转变，请标注出转变的大概的事件描述：",
-            "Description":"名称信息"
+            "api_content": "请提取以下文本中主要人物的名称及别名，若发生名称变换，则要有相关概述：",
+            "Description":"名称及别名(若发生名称变换，则要有相关概述)"
         },
 
         "personality":{

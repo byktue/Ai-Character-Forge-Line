@@ -1,7 +1,8 @@
 import os
 import requests
 
-def part_sum(file_path, output_file_path, API_URL, API_KEY, MODEL , AVATAR):
+def part_sum(file_path, output_file_path, API_URL, API_KEY, MODEL , AVATAR , Description):
+    
     headers = {
         "Content-Type": "application/json",
         "Authorization": f"Bearer {API_KEY}"
@@ -14,7 +15,7 @@ def part_sum(file_path, output_file_path, API_URL, API_KEY, MODEL , AVATAR):
         data = {
             "model": MODEL,
             "messages": [
-                {"role": "system", "content": f"请提取文本中 {AVATAR} 的详细外貌特征"},
+                {"role": "system", "content": f"请提取文本中 {AVATAR} 的详细{Description}信息"},
                 {"role": "user", "content": content}
             ]
         }
@@ -22,7 +23,7 @@ def part_sum(file_path, output_file_path, API_URL, API_KEY, MODEL , AVATAR):
         response = requests.post(API_URL, headers=headers, json=data)
         response.raise_for_status()
         result = response.json()
-        # 提取事件信息
+        # 提取信息
         events_info = result['choices'][0]['message']['content']
 
         # 检查输出文件所在的目录是否存在，如果不存在则创建
