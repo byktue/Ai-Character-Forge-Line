@@ -1,5 +1,13 @@
 import os
-from config_loader import load_config
+import sys
+# 获取当前脚本所在目录
+current_dir = os.path.dirname(os.path.abspath(__file__))
+# 返回上一级目录
+parent_dir = os.path.dirname(current_dir)
+# 将项目根目录添加到 sys.path 中
+sys.path.append(parent_dir)
+# 使用绝对导入
+from config.config_loader import load_config
 
 def combination(Part):
     try:

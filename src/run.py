@@ -5,7 +5,8 @@ from Text_summaries_3.main import final_output
 
 def run_main():
     pdf_to_txt()
-    Text_1_main()
+    for _ in range(3):
+        Text_1_main()
     combination_main()
     final_output()
     return None
