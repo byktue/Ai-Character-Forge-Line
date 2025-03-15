@@ -66,14 +66,14 @@ data 文件夹用于存储数据，src文件夹用于存储代码和配置
 **初次文本处理**
 - 位于src/Text summaries_1
 - 划分多个板块拉取deepseek的api进行相应的处理，比如name文件夹中，就是处理相应的名字和别名信息。
-- src/Text summaries_1/run_parallel.py 文件，则是将多线程并行运行的程序，在初次文本处理时，运行这个程序即可
+- src/Text summaries_1/main.py 文件，则是将多线程并行运行的程序，在初次文本处理时，运行这个程序即可
 - 线程中处理的结果，依旧是按照原本的文件结构进行存储
 
 **二次文本处理**
 - 位于src/Text summaries_2
 - 将初次文本处理后的同一类的文件，汇总到一个文本文件中，比如对于events维度进行处理之后，将events初次处理后的文件夹中的所有文件，全部汇聚到一个txt文件中
 - 删除空文件和无效信息，比如有些文件因为没有提取到有效的信息，仍会保留着 ”对于文本中角色的话语信息：角色话语：请提供文本内容，我将帮助提取角色的话语。” 之类的无效信息
-- 核心代码为src/Text summaries_2/main combination.py
+- 核心代码为src/Text summaries_2/main.py
 
 **三次文本处理**
 - 位于src/Text summaries_3
