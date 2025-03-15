@@ -1,6 +1,6 @@
 import os
 from api_request import extract_features
-from config_loader import load_config
+from config.config_loader import load_config
 
 def format_features(features):
     output = "对于文本中主要人物的外貌特征：\n"
