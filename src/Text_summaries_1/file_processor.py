@@ -42,11 +42,14 @@ def process_file(DEEPSEEK_API_URL, DEEPSEEK_API_KEY, DEEPSEEK_MODEL, input_file_
 def traverse_folder(Part):
     try:
         config = load_config()
+        if config is None:
+            exit(1)
+        parts = config["parts"]
         Text_config = config["Text summaries"]
-        One_part = Text_config[Part]
+        One_part = parts[Part]
         api_content = One_part["api_content"]
         input_file_path = config["photo_to_txt"]["OUTPUT_FOLDER"]
-        output_file_path = f"{Text_config["OUTPUT_FOLDER"]}/{Part}"
+        output_file_path = f"{Text_config["Text_1"]}/{Part}"
         # 从 shared_config 中获取 API 相关配置
         shared_config = config["shared_config"]
         DEEPSEEK_API_URL = shared_config["DEEPSEEK_API_URL"]

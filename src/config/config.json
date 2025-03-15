@@ -14,9 +14,29 @@
     },
 
     "Text summaries":{
-        "INPUT_FOLDER": "data/process_data/photo_to_txt_output",
-        "OUTPUT_FOLDER": "data/process_data/Text_1",
 
+        "INPUT_FOLDER": "data/process_data/photo_to_txt_output",
+
+        "Text_1": "data/process_data/Text_1",
+        
+        "COMBINATION": "data/process_data/combination",
+
+        "API_SUM":"data/process_data/api_sum",
+
+        "FINAL_OUTPUT":"data/final_output"
+    },
+
+    "parts":{
+
+        "parts": [
+            "appearance",
+            "events",
+            "identity",
+            "name",
+            "personality",
+            "utterance"
+        ],
+        
         "appearance":{
             "api_content": "请提取以下文本中主要人物的外貌特征：",
             "Description":"外貌特征"
@@ -45,11 +65,6 @@
         "utterance":{
             "api_content": "请提取以下文本中角色的话语：",
             "Description":"角色话语"
-        },
-        
-        "COMBINATION": "data/process_data/combination",
-        "API_SUM":"data/process_data/api_sum",
-
-        "FINAL_OUTPUT":"data/final_output"
+        }
     }
 }
