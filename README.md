@@ -86,120 +86,29 @@ data 文件夹用于存储数据，src文件夹用于存储代码和配置
 |
 +---data
 \---src
+    |   run.py
     |   src.md
     |   __init__.py
     |
     +---config
     |       config.json
+    |       config_loader.py
     |
-    +---local preprocessing
-    |   |   photo_to_txt.py
-    |   |
-    |   \---__pycache__
-    |           photo_to_txt.cpython-313.pyc
+    +---local_preprocessing
+    |   \---photo_to_txt.py
     |
-    +---Text summaries_1
-    |   |   run_parallel.py
-    |   |
-    |   +---appearance
-    |   |   |   api_request.py
-    |   |   |   config_loader.py
-    |   |   |   file_processor.py
-    |   |   |   main.py
-    |   |   |
-    |   |   \---__pycache__
-    |   |           api_request.cpython-313.pyc
-    |   |           config_loader.cpython-313.pyc
-    |   |           file_processor.cpython-313.pyc
-    |   |
-    |   +---events
-    |   |   |   api_request.py
-    |   |   |   config_loader.py
-    |   |   |   file_processor.py
-    |   |   |   main.py
-    |   |   |
-    |   |   \---__pycache__
-    |   |           api_request.cpython-313.pyc
-    |   |           config_loader.cpython-313.pyc
-    |   |           file_processor.cpython-313.pyc
-    |   |
-    |   +---identity
-    |   |   |   api_request.py
-    |   |   |   config_loader.py
-    |   |   |   file_processor.py
-    |   |   |   main.py
-    |   |   |
-    |   |   \---__pycache__
-    |   |           api_request.cpython-313.pyc
-    |   |           config_loader.cpython-313.pyc
-    |   |           file_processor.cpython-313.pyc
-    |   |
-    |   +---name
-    |   |   |   api_request.py
-    |   |   |   config_loader.py
-    |   |   |   file_processor.py
-    |   |   |   main.py
-    |   |   |
-    |   |   \---__pycache__
-    |   |           api_request.cpython-313.pyc
-    |   |           config_loader.cpython-313.pyc
-    |   |           file_processor.cpython-313.pyc
-    |   |
-    |   +---personality
-    |   |   |   api_request.py
-    |   |   |   config_loader.py
-    |   |   |   file_processor.py
-    |   |   |   main.py
-    |   |   |
-    |   |   \---__pycache__
-    |   |           api_request.cpython-313.pyc
-    |   |           config_loader.cpython-313.pyc
-    |   |           file_processor.cpython-313.pyc
-    |   |
-    |   +---utterance
-    |   |   |   api_request.py
-    |   |   |   config_loader.py
-    |   |   |   file_processor.py
-    |   |   |   main.py
-    |   |   |
-    |   |   \---__pycache__
-    |   |           api_request.cpython-313.pyc
-    |   |           config_loader.cpython-313.pyc
-    |   |           file_processor.cpython-313.pyc
-    |   |
-    |   \---__pycache__
-    |           api_request.cpython-313.pyc
-    |           config_loader.cpython-313.pyc
-    |           file_processor.cpython-313.pyc
+    +---Text_summaries_1
+    |       api_request.py
+    |       file_processor.py
+    |       main.py
     |
-    +---Text summaries_2
-    |   |   combination.py
-    |   |   config_loader.py
-    |   |   main combination.py
-    |   |
-    |   \---__pycache__
-    |           api_sum.cpython-313.pyc
-    |           combination.cpython-313.pyc
-    |           config_loader.cpython-313.pyc
+    +---Text_summaries_2
+    |       combination.py
+    |       main.py
     |
-    \---Text summaries_3
-        |   appearance.py
-        |   config_loader.py
-        |   events.py
-        |   file_checker.py
-        |   identity.py
-        |   main.py
-        |   name.py
-        |   personality.py
-        |   utterance.py
-        |
-        \---__pycache__
-                appearance.cpython-313.pyc
-                config_loader.cpython-313.pyc
-                events.cpython-313.pyc
-                file_checker.cpython-313.pyc
-                identity.cpython-313.pyc
-                name.cpython-313.pyc
-                personality.cpython-313.pyc
-                utterance.cpython-313.pyc
+    \---Text_summaries_3
+            file_checker.py
+            main.py
+            part_sum.py
 ```
+            
