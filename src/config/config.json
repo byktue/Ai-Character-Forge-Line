@@ -1,8 +1,12 @@
 {
+
+    "INPUT_FOLDER": "data/input_test",
+    "PROCESS_FOLDER": "data/process_data_test",
+    "OUTPUT_FOLDER": "data/output_test",
     
     "photo_to_txt":{
         "INPUT_FOLDER": "data/input",
-        "OUTPUT_FOLDER": "data/process_data/photo_to_txt_output"
+        "OUTPUT_FOLDER": "photo_to_txt_output"
     },
 
     "shared_config": {
@@ -15,15 +19,13 @@
 
     "Text summaries":{
 
-        "INPUT_FOLDER": "data/process_data/photo_to_txt_output",
+        "INPUT_FOLDER": "photo_to_txt_output",
 
-        "Text_1": "data/process_data/Text_1",
+        "Text_1": "Text_1",
         
-        "COMBINATION": "data/process_data/combination",
+        "COMBINATION": "combination",
 
-        "API_SUM":"data/process_data/api_sum",
-
-        "FINAL_OUTPUT":"data/final_output"
+        "API_SUM":"api_sum"
     },
 
     "parts":{

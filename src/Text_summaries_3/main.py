@@ -1,6 +1,6 @@
 import os
 import sys
-from part_sum import part_sum
+from .part_sum import part_sum
 import concurrent.futures
 
 # 获取当前脚本所在目录
@@ -12,7 +12,7 @@ sys.path.append(parent_dir)
 # 使用绝对导入
 from config.config_loader import load_config
 
-def final_output():
+def final_output(DRAMA , AVATAR):
     # 加载配置
     config = load_config()
     if config is None:
@@ -28,9 +28,9 @@ def final_output():
 
         # 从 Text summaries 中获取输入输出文件夹配置
         text_summaries_config = config["Text summaries"]
-        COMBINATION = text_summaries_config["COMBINATION"]
-        API_SUM = text_summaries_config["API_SUM"]
-        FINAL_OUTPUT = text_summaries_config["FINAL_OUTPUT"]
+        COMBINATION = f"{config["PROCESS_FOLDER"]}/{text_summaries_config["COMBINATION"]}/{DRAMA}"
+        API_SUM = f"{config["PROCESS_FOLDER"]}/{text_summaries_config["API_SUM"]}/{DRAMA}"
+        FINAL_OUTPUT = f"{config["OUTPUT_FOLDER"]}/{DRAMA}"
 
         # 从 parts 中获取各版块信息
         PARTS = config["parts"]
@@ -42,12 +42,10 @@ def final_output():
         exit(1)
 
     # ================== 主程序入口 ==================
-    DRAMA = input("请输入剧本名称：\n")
-    AVATAR = input("请输入人物名称：\n")
 
     def process_part(part):
         PART_COMBINATION = os.path.join(COMBINATION, f"{part}.txt")
-        PART_API_SUM = os.path.join(API_SUM, f"{DRAMA}/{AVATAR}/{part}.txt")
+        PART_API_SUM = os.path.join(API_SUM, f"{AVATAR}/{part}.txt")
         Description = PARTS[part]["Description"]
         # 检查文件是否存在且非空
         if not (os.path.exists(PART_API_SUM) and os.path.getsize(PART_API_SUM) > 0):
@@ -57,7 +55,7 @@ def final_output():
     with concurrent.futures.ThreadPoolExecutor() as executor:
         executor.map(process_part, parts)
 
-    target_file = os.path.join(FINAL_OUTPUT, f"{DRAMA}/{AVATAR}.md")
+    target_file = os.path.join(FINAL_OUTPUT, f"{AVATAR}.md")
     directory = os.path.dirname(target_file)
     if not os.path.exists(directory):
         os.makedirs(directory)
@@ -67,7 +65,7 @@ def final_output():
             target.write(f"\n#你是{AVATAR}，你是{AVATAR}，你是{AVATAR}，以下是有关于你的信息：\n")
 
             for part in parts:
-                PART_API_SUM = os.path.join(API_SUM, f"{DRAMA}/{AVATAR}/{part}.txt")
+                PART_API_SUM = os.path.join(API_SUM, f"{AVATAR}/{part}.txt")
                 Description = PARTS[part]["Description"]
                 with open(PART_API_SUM, 'r', encoding=encoding) as source_file:
                     # 先写入自定义内容
@@ -89,7 +87,11 @@ def final_output():
         print("源文件未找到，请检查文件路径。")
     except Exception as e:
         print(f"发生错误: {e}")
+    
+    return None
 
 
 if __name__ == "__main__":
-    final_output()
+    # DRAMA = input("请输入剧本名称：\n")
+    # AVATAR = input("请输入人物名称：\n")
+    final_output("归途七万里", "张眷信")

@@ -1,6 +1,16 @@
 import os
+import sys
 import json
 import pdfplumber
+
+# 获取当前脚本所在目录
+current_dir = os.path.dirname(os.path.abspath(__file__))
+# 返回上一级目录
+parent_dir = os.path.dirname(current_dir)
+# 将项目根目录添加到 sys.path 中
+sys.path.append(parent_dir)
+# 使用绝对导入
+from config.config_loader import load_config
 
 # ================== 从 PDF 提取文本函数 ==================
 def extract_text_from_pdf(pdf_path):
@@ -77,47 +87,12 @@ def process_folder(input_root, output_root):
                 os.rmdir(dir_path)
                 print(f"已删除空文件夹: {dir_path}")
 
-# ================== 配置管理模块 ==================
-def load_config(plate):
-    """加载配置文件并返回路径配置"""
-    # 设置默认配置（当配置文件不存在时使用）
-    default_config = {
-        "INPUT_FOLDER": "input_pdfs",
-        "OUTPUT_FOLDER": "output_texts"
-    }
-
-    try:
-        # 获取配置文件路径
-        project_root = os.path.dirname(os.path.dirname(__file__))
-        config_dir = os.path.join(project_root, 'config')
-        config_path = os.path.join(config_dir, 'config.json')
-
-        # 尝试读取配置文件
-        if os.path.exists(config_path):
-            with open(config_path, 'r', encoding='utf-8') as f:
-                config = json.load(f)
-            # 从 photo_to_txt 键下获取配置信息
-            photo_to_txt_config = config.get(plate, {})
-            input_path = photo_to_txt_config.get('INPUT_FOLDER', default_config['INPUT_FOLDER'])
-            output_path = photo_to_txt_config.get('OUTPUT_FOLDER', default_config['OUTPUT_FOLDER'])
-        else:
-            print("⚠️ 未找到配置文件，使用默认路径")
-            input_path = default_config['INPUT_FOLDER']
-            output_path = default_config['OUTPUT_FOLDER']
-
-        # 路径标准化处理
-        return (
-            os.path.normpath(input_path),
-            os.path.normpath(output_path)
-        )
-    except Exception as e:
-        print(f"❌ 配置读取失败: {str(e)}，使用默认路径")
-        return default_config['INPUT_FOLDER'], default_config['OUTPUT_FOLDER']
-
-def pdf_to_txt():
-    # 加载配置
-    INPUT_FOLDER, OUTPUT_FOLDER = load_config("photo_to_txt")
-
+def pdf_to_txt(Drama):
+    
+    config = load_config()
+    
+    INPUT_FOLDER = f"{config["INPUT_FOLDER"]}/{Drama}"
+    OUTPUT_FOLDER = f"{config["PROCESS_FOLDER"]}/{config["photo_to_txt"]["OUTPUT_FOLDER"]}/{Drama}"
     # 创建输入目录（如果不存在）
     if not os.path.exists(INPUT_FOLDER):
         os.makedirs(INPUT_FOLDER)
@@ -138,4 +113,4 @@ def pdf_to_txt():
 
 # ================== 主程序入口 ==================
 if __name__ == "__main__":
-    pdf_to_txt()
+    pdf_to_txt("归途七万里")

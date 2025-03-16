@@ -9,13 +9,14 @@ sys.path.append(parent_dir)
 # 使用绝对导入
 from config.config_loader import load_config
 
-def combination(Part):
+def combination(Part, drama):
+    # print("0\n")
     try:
         config = load_config()
         Text_config = config["Text summaries"]
         # 修正引号使用问题
-        input_folder_path = f'{Text_config["Text_1"]}/{Part}'
-        output_file = f'{Text_config["COMBINATION"]}/{Part}.txt'
+        input_folder_path = f'{config["PROCESS_FOLDER"]}/{Text_config["Text_1"]}/{Part}/{drama}'
+        output_file = f'{config["PROCESS_FOLDER"]}/{Text_config["COMBINATION"]}/{drama}/{Part}.txt'
     except KeyError as e:
         print(f"配置文件中缺少必要的键: {e}")
         print("请检查 config.json 文件内容。")
@@ -23,6 +24,8 @@ def combination(Part):
 
     # 初始化一个空字符串，用于存储所有文件的内容
     combined_content = ""
+    
+    # print("1\n")
 
     # 检查输入文件夹是否存在
     if not os.path.exists(input_folder_path):
@@ -45,6 +48,8 @@ def combination(Part):
                     combined_content += content + "\n"
             except Exception as e:
                 print(f"处理文件 {file} 时出错: {e}")
+                
+    # print("2\n")
 
     # 如果合并内容不为空，去掉最后多余的换行符
     if combined_content:

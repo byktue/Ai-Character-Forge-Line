@@ -1,6 +1,6 @@
 import os
 import sys
-from api_request import extract_features
+from .api_request import extract_features
 
 # 获取当前脚本所在目录
 current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -48,7 +48,7 @@ def process_file(DEEPSEEK_API_URL, DEEPSEEK_API_KEY, DEEPSEEK_MODEL, input_file_
         print(f"处理文件 {input_file_path} 时出现异常（类型: {type(e).__name__}）: {e}")
 
 # 定义函数遍历文件夹，找出并处理尚未处理的文件
-def traverse_folder(Part):
+def traverse_folder(Part, drama):
     try:
         config = load_config()
         if config is None:
@@ -57,8 +57,8 @@ def traverse_folder(Part):
         Text_config = config["Text summaries"]
         One_part = parts[Part]
         api_content = One_part["api_content"]
-        input_file_path = config["photo_to_txt"]["OUTPUT_FOLDER"]
-        output_file_path = f"{Text_config["Text_1"]}/{Part}"
+        input_file_path = f"{config["PROCESS_FOLDER"]}/{config["photo_to_txt"]["OUTPUT_FOLDER"]}/{drama}"
+        output_file_path = f"{config["PROCESS_FOLDER"]}/{Text_config["Text_1"]}/{Part}/{drama}"
         # 从 shared_config 中获取 API 相关配置
         shared_config = config["shared_config"]
         DEEPSEEK_API_URL = shared_config["DEEPSEEK_API_URL"]
