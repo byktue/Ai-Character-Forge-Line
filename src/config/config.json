@@ -1,9 +1,10 @@
 {
-
     "INPUT_FOLDER": "data/input_test",
     "PROCESS_FOLDER": "data/process_data_test",
     "OUTPUT_FOLDER": "data/output_test",
     
+    "INPUT_LIST":"src/drama_list.txt",
+
     "photo_to_txt":{
         "INPUT_FOLDER": "data/input",
         "OUTPUT_FOLDER": "photo_to_txt_output"
@@ -13,7 +14,7 @@
         "encoding": "utf-8",
         "DEEPSEEK_API_URL": "https://api.siliconflow.cn/v1/chat/completions",
         "DEEPSEEK_API_KEY": "sk-zieigdeeconidojrwencrdvsejqfxaoqvbxeqbsrxmqinlna",
-        "DEEPSEEK_MODEL": "deepseek-ai/DeepSeek-V3",
+        "DEEPSEEK_MODEL": "Qwen/QwQ-32B",
         "Description": "使用的是流动硅基（siliconflow）提供的deepseek的api"
     },
 
