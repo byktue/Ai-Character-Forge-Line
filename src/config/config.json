@@ -34,6 +34,7 @@
         "parts": [
             "name",
             "identity",
+            "relationship",
             "appearance",
             "personality",
             "events",
@@ -68,6 +69,11 @@
         "utterance":{
             "api_content": "请提取以下文本中角色的话语：",
             "Description":"角色话语"
+        },
+
+        "relationship":{
+            "api_content": "请提取以下文本中的人际关系：",
+            "Description":"人际关系"
         }
     }
 }
