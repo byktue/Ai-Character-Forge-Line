@@ -220,52 +220,54 @@ data 文件夹用于存储数据，src文件夹用于存储代码和配置
 
 \---src
 
-    |   run.py
-
-    |   src.md
-
-    |   __init__.py
-
-    |
-
-    +---config
-
-    |       config.json
-
-    |       config_loader.py
-
-    |
-
-    +---local_preprocessing
-
-    |   \---photo_to_txt.py
-
-    |
-
-    +---Text_summaries_1
-
-    |       api_request.py
-
-    |       file_processor.py
-
-    |       main.py
-
-    |
-
-    +---Text_summaries_2
-
-    |       combination.py
-
-    |       main.py
-
-    |
-
-    \---Text_summaries_3
-
-            file_checker.py
-
-            main.py
-
-            part_sum.py
+    |   drama_list.txt
+    |   install_dependencies.py
+    |   main.py
+    |   requirements.txt
+    |   run_one.py
+    |   src.md
+    |   __init__.py
+    |
+    +---config
+    |   |   config.json
+    |   |   config_loader.py
+    |   |
+    |   \---__pycache__
+    |           config_loader.cpython-313.pyc
+    |
+    +---local_preprocessing
+    |   |   photo_to_txt.py
+    |   |
+    |   \---__pycache__
+    |           photo_to_txt.cpython-313.pyc
+    |
+    +---Text_summaries_1
+    |   |   api_request.py
+    |   |   file_processor.py
+    |   |   main.py
+    |   |
+    |   \---__pycache__
+    |           api_request.cpython-313.pyc
+    |           file_processor.cpython-313.pyc
+    |           main.cpython-313.pyc
+    |
+    +---Text_summaries_2
+    |   |   combination.py
+    |   |   main.py
+    |   |
+    |   \---__pycache__
+    |           combination.cpython-313.pyc
+    |           main.cpython-313.pyc
+    |
+    +---Text_summaries_3
+    |   |   main.py
+    |   |   part_sum.py
+    |   |
+    |   \---__pycache__
+    |           main.cpython-313.pyc
+    |           part_sum.cpython-313.pyc
+    |
+    \---__pycache__
+            run_one.cpython-313.pyc
 
 ```
