@@ -1,4 +1,4 @@
-# Ai-Character-Forge-Line 1.3.0.
+# Ai-Character-Forge-Line 1.3.2.
 
 **AI-Powered Character Persona Extraction & Simulation Toolkit**
 
