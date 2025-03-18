@@ -5,11 +5,6 @@
     
     "INPUT_LIST":"src/drama_list.txt",
 
-    "photo_to_txt":{
-        "INPUT_FOLDER": "data/input",
-        "OUTPUT_FOLDER": "photo_to_txt_output"
-    },
-
     "shared_config": {
         "encoding": "utf-8",
         "DEEPSEEK_API_URL": "https://api.siliconflow.cn/v1/chat/completions",
@@ -17,6 +12,11 @@
         "DEEPSEEK_MODEL": "Qwen/QwQ-32B",
         "MODEL_CHOICES_EXAMPLE": ["Qwen/QwQ-32B","Pro/deepseek-ai/DeepSeek-V3","deepseek-ai/DeepSeek-R1"],
         "Description": "使用的是流动硅基（siliconflow）提供的api，不一定就要deepseek的模型，千问的模型也不错的"
+    },
+
+    "photo_to_txt":{
+        "INPUT_FOLDER": "data/input",
+        "OUTPUT_FOLDER": "photo_to_txt_output"
     },
 
     "Text summaries":{
