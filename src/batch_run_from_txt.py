@@ -1,6 +1,7 @@
 import os
 import json
 from run_one import run_one
+from install_dependencies import check_and_install_dependencies
 
 # 定义读取txt文件并批量运行程序的函数
 def batch_run_from_txt(file_path):
@@ -31,6 +32,9 @@ def batch_run_from_txt(file_path):
 
 
 if __name__ == "__main__":
+    
+    #检查依赖的库
+    check_and_install_dependencies()
     
     # 获取当前文件所在目录的绝对路径
     current_dir = os.path.dirname(os.path.abspath(__file__))
