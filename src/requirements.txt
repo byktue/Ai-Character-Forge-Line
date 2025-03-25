@@ -1,2 +1,4 @@
 pdfplumber
 requests
+chardet
+fitz
